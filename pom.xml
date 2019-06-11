@@ -1,21 +1,288 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.springmvc</groupId>
-  <artifactId>spring-mvc-web</artifactId>
-  <packaging>war</packaging>
-  <version>0.0.1</version>
-  <name>spring-mvc-web Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-  <build>
-    <finalName>spring-mvc-web</finalName>
-  </build>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.springmvc</groupId>
+	<artifactId>spring-mvc-web</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1</version>
+	<name>spring-mvc-web Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<springframework.version>5.1.7.RELEASE</springframework.version>
+		<spring.security.version>5.1.5.RELEASE</spring.security.version>
+		<aspectj.version>1.9.4</aspectj.version>
+		<inject.version>1</inject.version>
+		<servlet-api.version>4.0.1</servlet-api.version>
+		<jsp-api.version>2.3.3</jsp-api.version>
+		<jstl.version>1.2</jstl.version>
+		<jackson-core.version>2.9.9</jackson-core.version>
+		<rometools.version>1.12.0</rometools.version>
+		<validation-api.version>2.0.1.Final</validation-api.version>
+		<hibernate-validator.version>6.0.7.Final</hibernate-validator.version>
+		<el-api.version>3.0.1-b06</el-api.version>
+		<javax-el.version>3.0.1-b11</javax-el.version>
+		<joda-time.version>2.10.2</joda-time.version>
+		<commons-fileupload.version>1.4</commons-fileupload.version>
+		<commons-io.version>2.6</commons-io.version>
+		<junit.version>4.12</junit.version>
+		<xmlunit-matchers.version>2.6.2</xmlunit-matchers.version>
+		<json-path.version>2.4.0</json-path.version>
+		<hamcrest-library.version>2.1</hamcrest-library.version>
+		<compiler-plugin.version>3.8.1</compiler-plugin.version>
+		<surefire-plugin.version>2.22.2</surefire-plugin.version>
+		<war-plugin.version>3.2.3</war-plugin.version>
+		<dependency-plugin.version>3.1.1</dependency-plugin.version>
+		<jetty.version>9.4.18.v20190429</jetty.version>
+	</properties>
+
+	<dependencies>
+
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+
+		<!-- Spring Security (used for CSRF protection only) -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+
+		<!-- AspectJ -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>LATEST</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>LATEST</version>
+		</dependency>
+
+		<!-- @Inject -->
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>${inject.version}</version>
+		</dependency>
+
+		<!-- Servlet API -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>${jsp-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
+
+		<!-- Jackson JSON Processor -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson-core.version}</version>
+		</dependency>
+
+		<!-- Rome Atom+RSS -->
+		<dependency>
+			<groupId>com.rometools</groupId>
+			<artifactId>rome</artifactId>
+			<version>${rometools.version}</version>
+		</dependency>
+
+		<!-- JSR 303 with Hibernate Validator -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>${validation-api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate-validator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>${el-api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.el</artifactId>
+			<version>${javax-el.version}</version>
+		</dependency>
+
+		<!-- Joda Time Library -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>${joda-time.version}</version>
+		</dependency>
+
+		<!-- File Upload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${commons-fileupload.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io.version}</version>
+		</dependency>
+
+		<!-- Test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${springframework.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.xmlunit</groupId>
+			<artifactId>xmlunit-matchers</artifactId>
+			<version>${xmlunit-matchers.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
+			<version>${json-path.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-library</artifactId>
+			<version>${hamcrest-library.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${compiler-plugin.version}</version>
+				<configuration>
+					<source>${java-version}</source>
+					<target>${java-version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${war-plugin.version}</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${surefire-plugin.version}</version>
+				<configuration>
+					<includes>
+						<include>**/*Tests.java</include>
+					</includes>
+					<excludes>
+						<exclude>**/Abstract*.java</exclude>
+					</excludes>
+					<junitArtifactName>junit:junit</junitArtifactName>
+					<argLine>-Xmx512m</argLine>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>${dependency-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>install</id>
+						<phase>install</phase>
+						<goals>
+							<goal>sources</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>aspectj-maven-plugin</artifactId>
+				<version>1.11</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.aspectj</groupId>
+						<artifactId>aspectjrt</artifactId>
+						<version>${aspectj.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.aspectj</groupId>
+						<artifactId>aspectjtools</artifactId>
+						<version>${aspectjtools-version}</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>       <!-- weave all main classes -->
+							<goal>test-compile</goal>  <!-- weave all test classes -->
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<outxml>true</outxml>
+					<complianceLevel>${java-version}</complianceLevel>
+					<source>${java-version}</source>
+					<target>${java-version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty.version}</version>
+				<configuration>
+					<webApp>
+						<contextPath>/${project.artifactId}</contextPath>
+					</webApp>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
