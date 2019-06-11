@@ -15,6 +15,7 @@
 		<springframework.version>5.1.7.RELEASE</springframework.version>
 		<spring.security.version>5.1.5.RELEASE</spring.security.version>
 		<aspectj.version>1.9.4</aspectj.version>
+		<log4j.version>2.11.2</log4j.version>
 		<inject.version>1</inject.version>
 		<servlet-api.version>4.0.1</servlet-api.version>
 		<jsp-api.version>2.3.3</jsp-api.version>
@@ -71,12 +72,12 @@
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
-			<version>LATEST</version>
+			<version>${log4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-slf4j-impl</artifactId>
-			<version>LATEST</version>
+			<version>${log4j.version}</version>
 		</dependency>
 
 		<!-- @Inject -->
