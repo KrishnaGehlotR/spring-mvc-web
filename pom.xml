@@ -28,7 +28,7 @@
 		<javax-el.version>3.0.1-b11</javax-el.version>
 		<joda-time.version>2.10.2</joda-time.version>
 		<commons-fileupload.version>1.4</commons-fileupload.version>
-		<commons-io.version>2.6</commons-io.version>
+		<commons-io.version>2.7</commons-io.version>
 		<junit.version>4.12</junit.version>
 		<xmlunit-matchers.version>2.6.2</xmlunit-matchers.version>
 		<json-path.version>2.4.0</json-path.version>
