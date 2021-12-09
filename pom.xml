@@ -20,7 +20,7 @@
 		<servlet-api.version>4.0.1</servlet-api.version>
 		<jsp-api.version>2.3.3</jsp-api.version>
 		<jstl.version>1.2</jstl.version>
-		<jackson-core.version>2.9.9</jackson-core.version>
+		<jackson-core.version>2.9.10.8</jackson-core.version>
 		<rometools.version>1.12.0</rometools.version>
 		<validation-api.version>2.0.1.Final</validation-api.version>
 		<hibernate-validator.version>6.0.7.Final</hibernate-validator.version>
